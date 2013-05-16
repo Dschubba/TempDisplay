@@ -7,6 +7,7 @@
 
     <link class="include" rel="stylesheet" type="text/css" href="js/jquery.jqplot.min.css" />
    <script class="include" type="text/javascript" src="js/jquery.min.js"></script>
+   <script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
     
    
 </head>
@@ -17,7 +18,7 @@
 
 <p>jqPlot support axis labels through the "label" option of each axis.  The default label renderer creates labels in div tags, which allows full css control over every label.  Labels are assigned css classes like "jqplot-axis_name-label" where "axis_name" will be xaxis, yaxis, etc.</p>
 
-<div id="chart1" style="height:300px; width:500px;"></div>
+<div id="chart1" style="height:350px; width:600px;"></div>
 
 <script class="code" type="text/javascript">
 $(document).ready(function(){
@@ -29,10 +30,10 @@ $(document).ready(function(){
       series:[{showMarker:false}],
       axes:{
         xaxis:{
-          label:'Angle (radians)'
+          label: 'Date'
         },
         yaxis:{
-          label:'Cosine'
+          label:'Temperature'
         }
       }
   });
@@ -41,11 +42,6 @@ $(document).ready(function(){
   
 <!-- End example scripts -->
 
-<!-- Don't touch this! -->
-
-
-    <script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
-<!-- End Don't touch this! -->
 
 <!-- Additional plugins go here -->
 
