@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	
+	<title>Line Charts and Options</title>
+
+    <link class="include" rel="stylesheet" type="text/css" href="js/jquery.jqplot.min.css" />
+   <script class="include" type="text/javascript" src="js/jquery.min.js"></script>
+    
+   
+</head>
+<body>
+
+      
+<!-- Example scripts go here -->
+
+<p>jqPlot support axis labels through the "label" option of each axis.  The default label renderer creates labels in div tags, which allows full css control over every label.  Labels are assigned css classes like "jqplot-axis_name-label" where "axis_name" will be xaxis, yaxis, etc.</p>
+
+<div id="chart1" style="height:300px; width:500px;"></div>
+
+<script class="code" type="text/javascript">
+$(document).ready(function(){
+  var cosPoints = []; 
+  for (var i=0; i<2*Math.PI; i+=0.1){ 
+     cosPoints.push([i, Math.cos(i)]); 
+  } 
+  var plot1 = $.jqplot('chart1', [cosPoints], {  
+      series:[{showMarker:false}],
+      axes:{
+        xaxis:{
+          label:'Angle (radians)'
+        },
+        yaxis:{
+          label:'Cosine'
+        }
+      }
+  });
+});
+</script>
+  
+<!-- End example scripts -->
+
+<!-- Don't touch this! -->
+
+
+    <script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<!-- End Don't touch this! -->
+
+<!-- Additional plugins go here -->
+
+  <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<!-- End additional plugins -->
+
+</body>
+
+
+</html>
