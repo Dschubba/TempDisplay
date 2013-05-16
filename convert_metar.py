@@ -63,13 +63,22 @@ def output_to_csv(obs):
       outputwriter = csv.writer(csvfile, delimiter=',', quotechar='"')
       outputwriter.writerow([obs.time, obs.temp.value()])
       written_values.add(obs.time)
+      csvfile.close()
 
 def output_to_javascript(obs):
     """Writes a single javascript line to the output file."""
     if obs.time not in written_values:
         javascriptfile = open(outputfile,"a")
-        javascriptfile.write("['{0}',{1:.1f}]".format(obs.time, obs.temp.value()))
+        javascriptfile.write("['{0}',{1:.1f}],".format(obs.time, obs.temp.value()))
         written_values.add(obs.time)
+        javascriptfile.close()
+
+def make_valid_javascript(obs):
+    """Opens the written values and makes a valid Javascript array out of it."""
+    if write_as_javascript:
+        javascriptfile = open(outputfile,"rw")
+        contents = javascriptfile.read()
+
 
 def process_line(line):
   """Decode a single input line."""
@@ -96,6 +105,7 @@ def process_files(files):
     fh = open(file,"r")
     for line in fh.readlines():
       process_line(line)
+    fh.close()
 
 if files:
   if prof:
