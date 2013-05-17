@@ -73,11 +73,16 @@ def output_to_javascript(obs):
         written_values.add(obs.time)
         javascriptfile.close()
 
-def make_valid_javascript(obs):
+def make_valid_javascript():
     """Opens the written values and makes a valid Javascript array out of it."""
     if write_as_javascript:
-        javascriptfile = open(outputfile,"rw")
+        javascriptfile = open(outputfile,"r")
         contents = javascriptfile.read()
+        javascriptfile.close()
+        javascriptcomplete = "var cosPoints = [{0}];".format(contents[:-1])
+        javascriptfile = open(outputfile,"w")
+        javascriptfile.write(javascriptcomplete)
+        javascriptfile.close()
 
 
 def process_line(line):
@@ -112,6 +117,7 @@ if files:
     profile.run('process_files(files)')
   else:
     process_files(files)
+    make_valid_javascript()
 else:
    # read lines from stdin 
   while True:

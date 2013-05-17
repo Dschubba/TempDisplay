@@ -8,6 +8,10 @@
     <link class="include" rel="stylesheet" type="text/css" href="js/jquery.jqplot.min.css" />
    <script class="include" type="text/javascript" src="js/jquery.min.js"></script>
    <script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+   <script class="include" type="text/javascript" src="js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+   <script class="include" type="text/javascript" src="js/plugins/jqplot.highlighter.min.js"></script>
+
+   <script class="include" type="text/javascript" src="../output.js"></script>
     
    
 </head>
@@ -20,22 +24,26 @@
 
 <div id="chart1" style="height:350px; width:600px;"></div>
 
+
 <script class="code" type="text/javascript">
 $(document).ready(function(){
-  var cosPoints = []; 
-  for (var i=0; i<2*Math.PI; i+=0.1){ 
-     cosPoints.push([i, Math.cos(i)]); 
-  } 
-  var plot1 = $.jqplot('chart1', [cosPoints], {  
-      series:[{showMarker:false}],
+ var plot1 = $.jqplot('chart1', [cosPoints], {  
+      series:[{showMarker:true}],
       axes:{
         xaxis:{
-          label: 'Date'
+         renderer:$.jqplot.DateAxisRenderer,
+         label: 'Date'
         },
         yaxis:{
+          tickOptions:{
+            formatString:'%.1f °C'
+            },
           label:'Temperature'
         }
-      }
+      },
+      highlighter: {
+        show: true,
+     }
   });
 });
 </script>
