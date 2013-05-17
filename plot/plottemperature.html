@@ -28,12 +28,12 @@
 <script class="code" type="text/javascript">
 $(document).ready(function(){
  var plot1 = $.jqplot('chart1', [cosPoints], {  
-      series:[{showMarker:true}],
+   series:[{showMarker:false}],
       axes:{
         xaxis:{
          renderer:$.jqplot.DateAxisRenderer,
-         label: 'Date'
-        },
+        label: 'Date',
+       },
         yaxis:{
           tickOptions:{
             formatString:'%.1f °C'
