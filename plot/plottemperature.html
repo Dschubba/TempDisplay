@@ -16,7 +16,7 @@
    <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
 
    <script class="include" type="text/javascript" src="../output.js"></script>
-   <meta http-equiv="">
+   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
    
 </head>
 <body>
@@ -24,13 +24,13 @@
 <h1>Temperature</h1>
 <p>Temperature is updated every 30 Minutes.</p>
 
-<div id="chart1" style="height:800px; width:1800px;"></div>
+<div id="chart1" style="height:780px; width:1800px;"></div>
 
 
 <script class="code" type="text/javascript">
 $(document).ready(function(){
  var plot1 = $.jqplot('chart1', [temperaturePoints], {  
-   series:[{showMarker:false}],
+   series:[{showMarker:true}],
       axes:{
         xaxis:{
          renderer:$.jqplot.DateAxisRenderer,

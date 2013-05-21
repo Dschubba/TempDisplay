@@ -107,32 +107,32 @@ def process_line(line):
                 print string.join(err.args, ", ")
 
 def process_files(files):
-  """Decode METAR lines from the given files."""
-  if os.path.isfile(outputfile):
-     os.remove(outputfile)
-  for file in files:
-    fh = open(file, "r")
-    for line in fh.readlines():
-      process_line(line)
-    fh.close()
+    """Decode METAR lines from the given files."""
+    if os.path.isfile(outputfile):
+        os.remove(outputfile)
+    for file in files:
+        fh = open(file, "r")
+        for line in fh.readlines():
+            process_line(line)
+        fh.close()
 
 if files:
-  if prof:
-    profile.run('process_files(files)')
-  else:
-    process_files(files)
-    make_valid_javascript()
+    if prof:
+        profile.run('process_files(files)')
+    else:
+        process_files(files)
+        make_valid_javascript()
 else:
-   # read lines from stdin 
-  while True:
-    try:
-      line = sys.stdin.readline()
-      if line == "":
-        break
-      process_line(line)
-    except KeyboardInterrupt:
-      break
+    # read lines from stdin 
+    while True:
+        try:
+            line = sys.stdin.readline()
+            if line == "":
+                break
+            process_line(line)
+        except KeyboardInterrupt:
+            break
 
 if prof:
-  ps = pstats.load('metar.prof')
-  print ps.strip_dirs().sort_stats('time').print_stats()
+    ps = pstats.load('metar.prof')
+    print ps.strip_dirs().sort_stats('time').print_stats()
