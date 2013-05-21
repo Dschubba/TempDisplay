@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 
+
 <html>
 <head>
 	
 	<title>Line Charts and Options</title>
 
-    <link class="include" rel="stylesheet" type="text/css" href="js/jquery.jqplot.min.css" />
+   <link class="include" rel="stylesheet" type="text/css" href="js/jquery.jqplot.min.css" />
+
    <script class="include" type="text/javascript" src="js/jquery.min.js"></script>
    <script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
    <script class="include" type="text/javascript" src="js/plugins/jqplot.dateAxisRenderer.min.js"></script>
    <script class="include" type="text/javascript" src="js/plugins/jqplot.highlighter.min.js"></script>
+   <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+   <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
 
    <script class="include" type="text/javascript" src="../output.js"></script>
-    
+   <meta http-equiv="">
    
 </head>
 <body>
 
-      
-<!-- Example scripts go here -->
+<h1>Temperature</h1>
+<p>Temperature is updated every 30 Minutes.</p>
 
-<p>jqPlot support axis labels through the "label" option of each axis.  The default label renderer creates labels in div tags, which allows full css control over every label.  Labels are assigned css classes like "jqplot-axis_name-label" where "axis_name" will be xaxis, yaxis, etc.</p>
-
-<div id="chart1" style="height:350px; width:600px;"></div>
+<div id="chart1" style="height:800px; width:1800px;"></div>
 
 
 <script class="code" type="text/javascript">
 $(document).ready(function(){
- var plot1 = $.jqplot('chart1', [cosPoints], {  
+ var plot1 = $.jqplot('chart1', [temperaturePoints], {  
    series:[{showMarker:false}],
       axes:{
         xaxis:{
@@ -49,15 +51,6 @@ $(document).ready(function(){
 </script>
   
 <!-- End example scripts -->
-
-
-<!-- Additional plugins go here -->
-
-  <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasTextRenderer.min.js"></script>
-  <script class="include" type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-
-<!-- End additional plugins -->
-
 </body>
 
 
