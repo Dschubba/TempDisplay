@@ -27,13 +27,13 @@ import csv
 
 def usage():
     program = os.path.basename(sys.argv[0])
-    print "Usage: ", program, "[-s] [<file>]"
+    print "Usage: ", program, "[-s] [<files>]"
     print """Options:
     <files> .. a set of files containing METAR reports to parse
     -q ....... run "quietly" - just report parsing error.
     -s ....... run silently. (no output)
     -p ....... run with profiling turned on.
-    -f ....... the outputfile (default is ""output.csv"")
+    -f ....... the outputfile (default is "output.csv")
     -j ....... write the output as a javascript array
     This program reads lines containing coded METAR reports from a file
     and prints human-reable reports.  Lines are taken from stdin if no
@@ -52,23 +52,24 @@ debug = False
 prof = False
 
 try:
-    opts, files = getopt.getopt(sys.argv[1:], 'dpqsjf')
-    for opt in opts:
-        if opt[0] == '-s':
+    opts, files = getopt.gnu_getopt(sys.argv[1:], 'dpqsjf:')
+    for opt, arg in opts:
+        if opt == '-s':
             silent = True
             report = False
-        elif opt[0] == '-q':
+        elif opt == '-q':
             report = False
-        elif opt[0] == '-d':
+        elif opt == '-d':
             debug = True
             Metar.debug = True
-        elif opt[0] == '-p':
+        elif opt == '-p':
             prof = True
-        elif opt[0] == '-j':
-            outputfile = "output.js"
+        elif opt == '-j':
+            if outputfile == "output.csv":
+                outputfile = "output.js"
             write_as_javascript = True
-        elif opt[0] == '-f':
-            outputfile = opt[1]
+        elif opt == '-f':
+            outputfile = arg
 except:
     usage()
 
