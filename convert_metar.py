@@ -27,7 +27,7 @@ import csv
 
 def usage():
     program = os.path.basename(sys.argv[0])
-    print "Usage: ", program, "[-s] [<files>]"
+    print "Usage: ", program, "[-s] [-q] [-p] [-f outputfilename] [-j] [<files>]"
     print """Options:
     <files> .. a set of files containing METAR reports to parse
     -q ....... run "quietly" - just report parsing error.
